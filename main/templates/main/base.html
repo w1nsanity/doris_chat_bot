@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="../../static/js/microphone.js" defer></script>
+</head>
+<body>
+    <div class="gradient">
+        <div class="header">
+            <nav>
+                <a href="{% url 'main' %}">main</a>
+                <a href="{% url 'about' %}">about me</a>
+                <a href="{% url 'python' %}">chatbot</a>
+            </nav>
+        </div>
+        <div class="content_wrapper">
+            <div class="content" id="content">
+                    {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

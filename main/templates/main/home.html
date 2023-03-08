@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    python_integration
+{% endblock %}
+
+{% block content %}
+<div class="data_wrapper" style="overflow: auto">
+    {% if user %}
+        {% for u, b in list %}
+            <span class='user'>{{u}}</span><br><br>
+            <span class='bot'>{{b}}</span><br><br>
+        {% endfor %}
+    {% endif %}
+</div>
+<form action='/output' method='post'>
+    {% csrf_token %}
+    <input class='speech-input' type="text" name="text" placeholder="your message..." required>
+    {{data_external}}
+    <button name="send_button" onclick='location.href="{% url 'script' %}"'>send</button>
+</form>
+{% endblock %}
