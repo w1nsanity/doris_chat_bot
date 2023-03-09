@@ -17,6 +17,10 @@
     {% csrf_token %}
     <input class='speech-input' type="text" name="text" placeholder="your message..." required>
     {{data_external}}
+    {% if text %}
     <button name="send_button" onclick='location.href="{% url 'script' %}"'>send</button>
+    {% else %}
+    <button name="send_button">send</button>
+    {% endif %}
 </form>
 {% endblock %}

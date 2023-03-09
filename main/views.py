@@ -10,12 +10,7 @@ def index(request):
 def about(request):
     return render(request, 'main/about.html')
 
-def simple_function(request):
-    print('\nsimple function\n')
-    return HttpResponse("""<html><script>window.location.replace('/');</script</html>""")
-
 def button(request):
-    
     return render(request, 'main/home.html')
 
 bot = []
@@ -79,9 +74,12 @@ def output(request):
         return result
     
     msg = request.POST.get('text')
+    # if msg:
     ints = predict_class(msg)
     bot.append(get_response(ints, intents))
     user.append(msg)
     return render(request, 'main/home.html', {'list': list(zip(user, bot))})
+    # else:
+    #     return HttpResponse("<h1>blank phrase!</h1>")
         
 
