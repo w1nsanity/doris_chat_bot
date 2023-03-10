@@ -5,22 +5,24 @@
 {% endblock %}
 
 {% block content %}
-<div class="data_wrapper" style="overflow: auto">
+<div id="data-wrapper" class="data_wrapper" style="overflow: auto">
     {% if user %}
         {% for u, b in list %}
-            <span class='user'>{{u}}</span><br><br>
+            <p class='user'>{{u}}</p>
             <span class='bot'>{{b}}</span><br><br>
         {% endfor %}
     {% endif %}
 </div>
-<form action='/output' method='post'>
-    {% csrf_token %}
-    <input class='speech-input' type="text" name="text" placeholder="your message..." required>
-    {{data_external}}
-    {% if text %}
-    <button name="send_button" onclick='location.href="{% url 'script' %}"'>send</button>
-    {% else %}
-    <button name="send_button">send</button>
-    {% endif %}
-</form>
+<div class="form-wrapper">
+    <form action='/output' method='post'>
+        {% csrf_token %}
+        <input class='speech-input' type="text" name="text" placeholder="your message..." required>
+        {{data_external}}
+        {% if text %}
+        <button name="send_button" onclick='location.href="{% url 'script' %}"'>send</button>
+        {% else %}
+        <button name="send_button">send</button>
+        {% endif %}
+    </form>
+</div>
 {% endblock %}

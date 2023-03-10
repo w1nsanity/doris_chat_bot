@@ -31,11 +31,11 @@ def output(request):
     import json
         
     lemmatizer = WordNetLemmatizer()
-    intents = json.loads(open('intents.json').read())
+    intents = json.loads(open('bot_2.0/big_bot_config1.json').read())
 
-    words = pickle.load(open('words.pkl', 'rb'))
-    classes = pickle.load(open('classes.pkl', 'rb'))
-    model = load_model('chatbot_model.h5')
+    words = pickle.load(open('bot_2.0/words_2.0.pkl', 'rb'))
+    classes = pickle.load(open('bot_2.0/classes_2.0.pkl', 'rb'))
+    model = load_model('bot_2.0/chatbot_model_2.0.h5')
 
     def clean_up_sentence(sentence):
         sentence_words = nltk.word_tokenize(sentence)
@@ -74,12 +74,9 @@ def output(request):
         return result
     
     msg = request.POST.get('text')
-    # if msg:
     ints = predict_class(msg)
     bot.append(get_response(ints, intents))
     user.append(msg)
     return render(request, 'main/home.html', {'list': list(zip(user, bot))})
-    # else:
-    #     return HttpResponse("<h1>blank phrase!</h1>")
         
 

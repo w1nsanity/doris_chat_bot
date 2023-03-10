@@ -178,3 +178,8 @@
 		
 	});
 })();
+
+
+var block = document.getElementById("data-wrapper");
+block.scrollTop = block.scrollHeight;
+
